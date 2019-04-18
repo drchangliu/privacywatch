@@ -18,7 +18,7 @@ DELETE="rm -r"
 DATE="$(date +"%m_%d_%Y_%H_%M").txt"
 
 #String values for what is searched for using grep
-declare -a SEARCH_VALUES=("writer_->Write" "fprintf" "cv::imwrite" "cv::imencode" "ofstream")
+declare -a SEARCH_VALUES=("writer_->Write" "fprintf" "cv::imwrite" "ofstream")
 
 #Functions used by script
 #Searches Apollo source using grep
@@ -41,9 +41,6 @@ Print(){
 # Prepare output repository.
 git clone analysis-result new-result
 cd new-result
-
-git config --global user.email "nobody@concourse-ci.org"
-git config --global user.name "Concourse"
 
 #
 # Make some changes.
@@ -68,7 +65,7 @@ echo "Searching..."
 
 #Loops through each string in SEARCH_VALUES
 #Calls the Print and Search function for each value
-for goal in ${SEARCH_VALUES}
+for goal in ${SEARCH_VALUES[@]}
 do
   Print $goal
   Search $goal
@@ -85,22 +82,31 @@ diff $TEST $OLD >> $DIFF_RES
 if [ -s $DIFF_RES ]
 then
 	echo "Changes found"
+
+  # Exporting different file for another task.
+  cp "$DIFF_RES" ../diff-result
+
 	ChangesFound
+
+  #Deletes previous test file
+  $DELETE $OLD
+
+  #Creates new previous test file for next check
+  mv "$TEST" "$ARCHIVE_ROOT/$DATE"
+  cp "$ARCHIVE_ROOT/$DATE" "$ARCHIVE_ROOT/previous_test.txt"
+
+  # Exit with error.
+  exit 1
 else
-	#Deletes the empty differences file if none were found
 	echo "Changes not found"
-	$DELETE $DIFF_RES
+
+  # Exporting different file for another task.
+  cp "$DIFF_RES" ../diff-result
+
+  #Deletes previous test file
+  $DELETE $OLD
+
+  #Creates new previous test file for next check
+  mv "$TEST" "$ARCHIVE_ROOT/$DATE"
+  cp "$ARCHIVE_ROOT/$DATE" "$ARCHIVE_ROOT/previous_test.txt"
 fi
-
-#Deletes previous test file
-$DELETE $OLD
-
-#Creates new previous test file for next check
-mv "$TEST" "$ARCHIVE_ROOT/$DATE"
-cp "$ARCHIVE_ROOT/$DATE" "$ARCHIVE_ROOT/previous_test.txt"
-
-#
-# Add and commit changes.
-#
-git add ./
-git commit -m "Perform analysis."

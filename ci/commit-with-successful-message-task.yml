@@ -5,12 +5,12 @@ image_resource:
   source: {repository: krerkkiat/analysis-image}
 
 inputs:
-- name: apollo-source-code
 - name: analysis-result
-
-outputs:
 - name: new-result
 - name: diff-result
 
+outputs:
+- name: new-result
+
 run:
-  path: "./analysis-result/ci/check"
+  path: "./analysis-result/ci/commit-with-successful-message"
