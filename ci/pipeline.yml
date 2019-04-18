@@ -34,7 +34,7 @@ resources:
 - name: analysis-result
   type: git
   source:
-    uri: git@github.com:krerkkiat-shadow/privacywatch.git
+    uri: git@github.com:drchangliu/privacywatch.git
     branch: master
     private_key: ((git-private-key))
     username: ((git-username))
