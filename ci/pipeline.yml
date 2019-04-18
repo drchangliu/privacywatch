@@ -1,6 +1,7 @@
 ---
 jobs:
 - name: basic-privacy-analysis
+  public: true
   serial: true
   on_failure:
     # Push the commit up anyway.
