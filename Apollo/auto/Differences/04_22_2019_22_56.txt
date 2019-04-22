@@ -1,0 +1,2 @@
+264d263
+< ../apollo-source-code/modules/drivers/video/tools/decode_video/frame_processor.cc:  std::ofstream out(output_jpg_file, std::ios::binary);
