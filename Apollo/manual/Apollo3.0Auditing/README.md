@@ -6,8 +6,20 @@
 
 # About FLAGS
 
-* https://github.com/drchangliu/vital/blob/master/notes/perception_checking.md
- 
+### FLAGS
+
+Flags are booleans, which are variables that can only be either true or false. In this case, flags are used to control whether the perception module is saving the data or not.
+
+The results of the research conducted over the code state that all places in the code where data could potentially be saved are protected by a flag. The code will not run unless the developer explicitly sets the flag to true, and all debug flags are set to false by default. No PII (personally identifiable information) leaking behaviors in perception module were found during its data processing.
+
+### GFLAGS
+
+Some flags are defined in gflags (Google's flag library). 
+
+The gflags package contains a C++ library that implements commandline flags processing. It includes built-in support for standard types such as string and the ability to define flags in the source file in which they are used. 
+
+Online documentation available at: https://gflags.github.io/gflags/
+
  # Search of "cv::imwrite()" #
  
  `cv::imwrite()` (9 usages in 7 files) 
