@@ -1,0 +1,4 @@
+60c60
+< ../apollo-source-code/modules/drivers/video/video_driver_component.cc:    writer_->Write(pb_image_);
+---
+> ../apollo-source-code/modules/drivers/video/video_driver_component.cc:      writer_->Write(pb_image_);
