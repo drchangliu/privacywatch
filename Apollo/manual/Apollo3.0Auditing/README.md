@@ -1,10 +1,47 @@
-# How many different ways are there to write image or video files to hard disks?
+# The Sensors of Autonomous Vehicles and How They Relate to Data Privacy
+
+## Three Main Sensors
+These are the three main sensors used by the Apollo autonomous vehicles to sense and interpret their surroundings.
+
+* LiDAR (Light Detection and Ranging)
+* Radar (Radio Detection and Ranging) 
+* Camera
+
+## Physical Sensor Information
+
+### LiDAR
+
+LiDAR creates point cloud representations of its surroundings with lasers. The sensor sends the lasers out and waits for laser beams to bounce back to the point of origin. The amount of time the lasers took to bounce back is used to calculate the distance. By using lasers, LiDAR can provide information such as distance and height, a task that would be hard to complete using a flat picture taken by a camera. 
+
+In the point cloud representation, each point represents a laser beam at the point where it has been bounced back. 
+
+LiDAR is best at detecting objects and it functions well in poor lighting. However, it cannot track lanes very well. It is not very good at object classification, its range of visibility is not the best, and excessive small particles caused by bad weather may affect it negatively.
+
+### Radar
+
+Radar is very similar to LiDAR, but instead of using lasers, it uses radio waves to accomplish its goal. Radio waves have less absorption and can, therefore, work over a longer distance. 
+
+Radar has the largest range of visibility and functions well in poor lighting situations and in bad weather. It can sense objects, but it is not as good at detecting objects as LiDAR is, and it cannot classify objects.
+
+### Camera
+
+The camera takes images and videos of its surroundings. Those images and videos will then go through multiple stages of processing. The objects in the processed pictures are then classified and the data is used in the decisions the autonomous vehicle makes. For example, the camera feed can be used for lane detection and classifying traffic light colors. 
+
+In some prototype Apollo cars, there are two cameras mounted on the car roof, one with a lens of focal length 25mm, and the other with a lens of focal length 6mm.
+
+Cameras can be limited by poor lighting due to light sources or bad weather. They are not the best at accurately detecting objects, either. Bad weather especially can block their view and hinder them from working properly. 
+
+## Code Keywords 
+#### How many different ways are there to write image or video files to hard disks?
+
+These are the functions used in the code to save data (flags, images, video files, etc.) to a destination elsewhere.
 
 * `cv::imwrite()`
 * `ofstream`
 * `cv::imencode()`
 
-# About FLAGS
+
+## About FLAGS
 
 ### FLAGS
 
@@ -20,7 +57,9 @@ The gflags package contains a C++ library that implements commandline flags proc
 
 Online documentation available at: https://gflags.github.io/gflags/
 
- # Search of "cv::imwrite()" #
+## Keyword Search
+
+ ### Search of "cv::imwrite()" 
  
  `cv::imwrite()` (9 usages in 7 files) 
  
@@ -35,8 +74,7 @@ Online documentation available at: https://gflags.github.io/gflags/
 | [tl_preproccessor_subnode.cc](https://github.com/ApolloAuto/apollo/blob/r3.0.0/modules/perception/traffic_light/onboard/tl_preprocessor_subnode.cc) | [166](https://github.com/ApolloAuto/apollo/blob/r3.0.0/modules/perception/traffic_light/onboard/tl_preprocessor_subnode.cc#L166)| SubCameraImage() | Saves image (only if flag is set to be true). | FLAGS_output_raw_img is set to false when initialized in [perception_gflags.cc](https://github.com/ApolloAuto/apollo/blob/r3.0.0/modules/perception/common/perception_gflags.cc#L95), line 95. |
 | [tl_proc_subnode.cc](https://github.com/ApolloAuto/apollo/blob/r3.0.0/modules/perception/traffic_light/onboard/tl_proc_subnode.cc) | [140](https://github.com/ApolloAuto/apollo/blob/r3.0.0/modules/perception/traffic_light/onboard/tl_proc_subnode.cc#L140) | OutputDebugImg() | Saves image (only if flag is set to be true). | FLAGS_output_debug_img is set to false when initialized in [perception_gflags.cc](https://github.com/ApolloAuto/apollo/blob/r3.0.0/modules/perception/common/perception_gflags.cc#L96), line 96. |
 
-
-# Search of "ofstream" #
+### Search of "ofstream"
  
  `ofstream` (35 usages in 25 files) 
  
