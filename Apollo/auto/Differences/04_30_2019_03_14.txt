@@ -1,0 +1,3 @@
+68,69d67
+< ../apollo-source-code/modules/data/tools/smart_recorder/record_processor.cc:  writer_->WriteChannel(msg.channel_name,
+< ../apollo-source-code/modules/data/tools/smart_recorder/record_processor.cc:  writer_->WriteMessage(msg.channel_name, msg.content, msg.time);
