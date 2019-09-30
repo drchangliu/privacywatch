@@ -8,4 +8,4 @@ The Apollo system (v3.0 and v3.5) was manually audited. The results are listed i
 
 ## Pipeline Status
 
-The live pipeline status can be seen from this [page](http://kchusap.com:2401/)
+The live pipeline status can be seen from this [page](https://ci.kchusap.com/)
