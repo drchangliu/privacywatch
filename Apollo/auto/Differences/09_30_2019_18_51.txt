@@ -1,0 +1,4 @@
+107c107
+< ../apollo-source-code/cyber/logger/log_file_object.cc:        fprintf(stderr, "COULD NOT CREATE LOGFILE '%s'!\n",
+---
+> ../apollo-source-code/cyber/logger/log_file_object.cc:        fprintf(stderr, "COULD NOT CREATE A LOGGINGFILE %s!",
